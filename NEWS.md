@@ -1,3 +1,25 @@
+TwoSampleMR v0.5.7 (Release date: TBC)
+==============
+
+Changes:
+
+* Some p-values that should have been ~0 were being stored as 1 in the elasticsearch database. This has now been fixed and those datasets have been clumped again to re-define the tophits. A full list of affected GWAS is available here: https://github.com/MRCIEU/opengwas-infpval-fix
+* Updated steiger filtering to use effective sample size for case control studies (thanks to @niekverw)
+* Fixed issue with tri-allelic SNPs in harmonisation. Credit to Clare Horscroft (@chorscroft) for spotting the error and fixing
+* Fixed an issue with experimental version of local multivariable MR method. Credit to Mischa Lundberg (@MischaLundberg).
+
+TwoSampleMR v0.5.6 (Release date: 2021-03-25)
+==============
+
+Changes:
+
+* Fix to scatter plot (thanks to Yossi Farjoun @yfarjoun)
+* Update to mr.raps parameters (thanks to Qingyuan Zhao @qingyuanzhao)
+* Bug fix to MVMR (thanks to Conor Judge @conorjudge)
+* Fix to harmonise_data (thanks to Leland Taylor @letaylor)
+* Documentation (thanks to @jinghuazhao)
+
+
 TwoSampleMR v0.5.5 (Release date: 2020-08-09)
 ==============
 
