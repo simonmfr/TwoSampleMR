@@ -45,7 +45,7 @@
 #'
 #' @export
 #' @return Data frame with harmonised effects and alleles
-harmonise_data <- function(exposure_dat, outcome_dat, action=2)
+harmonise_data <- function(exposure_dat, outcome_dat, action=2, remove_palindromes = 0.08)
 {
 	stopifnot(all(action %in% 1:3))
 	check_required_columns(exposure_dat, "exposure")
@@ -77,7 +77,11 @@ harmonise_data <- function(exposure_dat, outcome_dat, action=2)
 	{
 		x <- subset(res.tab, id.exposure == combs$id.exposure[i] & id.outcome == combs$id.outcome[i])
 		message("Harmonising ", x$exposure[1], " (", x$id.exposure[1], ") and ", x$outcome[1], " (", x$id.outcome[1], ")")
-		x <- harmonise(x, 0.08, x$action[1])
+		
+		
+		x <- harmonise(x, remove_palindromes, x$action[1])
+		
+		
 		attr(x, "log")[['candidate_variants']] <- sum(exposure_dat$id.exposure == x$id.exposure[1])
 		attr(x, "log")[['variants_absent_from_reference']] <- sum(exposure_dat$id.exposure == x$id.exposure[1]) - nrow(x)
 
